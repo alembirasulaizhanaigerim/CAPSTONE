@@ -833,8 +833,7 @@
        
         <script src="js/jquery-1.11.0.min.js"></script>
        
-                  <script> $(document).ready(function() {$('#traffic-prediction-form').on('submit', function(event) {event.preventDefault();var carCount = parseInt($('#car-count').val());var bikeCount = parseInt($('#bike-count').val());var busCount = parseInt($('#bus-count').val()); var truckCount = parseInt($('#truck-count').val());  var total = carCount + bikeCount + busCount + truckCount;var prediction = '';if (total < 50) {prediction = 'Low';} else if (total >= 50 && total < 100) {prediction = 'Normal';} else if (total >= 100 && total < 200) {prediction = 'Heavy'; } else { prediction = 'High'; }$('#predictionResult').removeClass('hidden').text('Traffic Situation: ' + prediction); });});    
-        </script>
+                
         
         <script src="js/style-switcher.js"></script>
        
