@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Traffic Prediction</title>
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link href="css/animate.css" rel="stylesheet">
+
+  <!-- Google Font Lato -->
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+
+  <!-- Plugin Styles -->
+  <link href="css/datepicker.css" rel="stylesheet">
+
+  <!-- Main Styles -->
+  <link href="css/styles.css" rel="stylesheet">
+  
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="img/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="img/ico/favicon.png">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  </head>
+  <body id="top" data-spy="scroll" data-target=".navbar" data-offset="260">
+
+    <!-- Header start -->
+    <header data-spy="affix" data-offset-top="39" data-offset-bottom="0" class="large">
+
+      <div class="row container box">
+        <div class="col-md-5">
+          <!-- Logo start -->
+          <div class="brand">
+            <h1><a class="scroll-to" href="#top"><img class="img-responsive"  src="C:\Users\Айгерим\OneDrive\Рабочий стол\carrental\themeforest-8245093-car-rental-landing-page\website\img\logo.png" alt="Car|Rental"></a></h1>
+          </div>
+          <!-- Logo end -->
+        </div>
+
+        <div class="col-md-7">
+          <div class="pull-right">
+            <div class="header-info pull-right">
+              
+              <div class="language-switch pull-right">
+                <div class="dropdown">
+                  
+                </div>
+              </div>
+              <!-- Language Switch end -->
+            </div>
+          </div>
+
+          <div class="clearfix"></div>
+
+          <!-- start navigation -->
+          <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+              <!-- Toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand scroll-to" href="#top"><img class="img-responsive"  src="img/logo.gif" alt="Car|Rental"></a>
+              </div>
+              <!-- Collect the nav links, for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <!-- Nav-Links start -->
+                <ul class="nav navbar-nav navbar-right">
+                  <li class="active"><a href="#" class="scroll-to">Home</a></li>
+                  <li><a href="#services" class="scroll-to">Services</a></li>
+                  <li><a href="#vehicles" class="scroll-to">Traffic Models</a></li>
+                  <li><a href="#reviews" class="scroll-to">Reviews</a></li>
+                  <li><a href="#locations" class="scroll-to">Locations</a></li>
+                  <li><a href="#contact" class="scroll-to">Contact</a></li>
+                </ul>
+                <!-- Nav-Links end -->
+              </div>
+            </div>
+          </nav>
+          <!-- end navigation -->
+        </div>
+      </div>
+
+    </header>
+    <!-- Header end -->
+
+
+
+   <!-- Teaser start -->
+   <section id="teaser">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7 col-xs-12 pull-right">
+          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="item active">
+                <h1 class="title">PREDICT TRAFFIC NOW <span class="subtitle">Plan your route efficiently</span></h1>
+                <div class="car-img">
+                  <img src="img/car2.jpg" class="img-responsive" alt="car1">
+                </div>
+              </div>
+              <div class="item">
+                <h1 class="title">PREDICT TRAFFIC NOW <span class="subtitle">Plan your trip now</span></h1>
+                <div class="car-img">
+                  <img src="img/car1.jpg" class="img-responsive" alt="car1">
+                </div>
+              </div>
+            </div>
+            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-5 col-xs-12 pull-left">
+          <div class="reservation-form-shadow">
+            <form id="traffic-prediction-form">
+              <div class="alert alert-danger hidden" id="traffic-prediction-form-msg">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <strong>Note:</strong> All fields are required!
+              </div>
+              <div class="form-group">
+                <label for="date">Date</label>
+                <input type="text" name="date" id="date" class="form-control datepicker" placeholder="mm/dd/yyyy" required>
+              </div>
+              <div class="form-group">
+                <label for="day-of-week">Day of the week</label>
+                <select name="day-of-week" id="day-of-week" class="form-control" required>
+                  <option value="">Select day</option>
+                  <option value="1">Monday</option>
+                  <option value="2">Tuesday</option>
+                  <option value="3">Wednesday</option>
+                  <option value="4">Thursday</option>
+                  <option value="5">Friday</option>
+                  <option value="6">Saturday</option>
+                  <option value="7">Sunday</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="car-count">Car Count</label>
+                <input type="number" name="car-count" id="car-count" class="form-control" placeholder="Enter number of cars" required>
+              </div>
+              <div class="form-group">
+                <label for="bike-count">Bike Count</label>
+                <input type="number" name="bike-count" id="bike-count" class="form-control" placeholder="Enter number of bikes" required>
+              </div>
+              <div class="form-group">
+                <label for="bus-count">Bus Count</label>
+                <input type="number" name="bus-count" id="bus-count" class="form-control" placeholder="Enter number of buses" required>
+              </div>
+              <div class="form-group">
+                <label for="truck-count">Truck Count</label>
+                <input type="number" name="truck-count" id="truck-count" class="form-control" placeholder="Enter number of trucks" required>
+              </div>
+            
+              <div class="form-group">
+                <label for="time">Time</label>
+                <div class="row">
+                  <div class="col-xs-4">
+                    <input type="number" name="hour" id="hour" class="form-control" placeholder="HH" required>
+                  </div>
+                  <div class="col-xs-4">
+                    <input type="number" name="minute" id="minute" class="form-control" placeholder="MM" required>
+                  </div>
+                  <div class="col-xs-4">
+                    <select name="ampm" id="ampm" class="form-control" required>
+                      <option value="0">AM</option>
+                      <option value="1">PM</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="submit btn btn-primary">START TRAFFIC PREDICTION</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div id="predictionResult" class="hidden alert alert-info"></div>
+  <div class="arrow-down"></div>
+  <!-- Teaser end -->
+
+
+        <!-- Services start -->
+        <section id="services" class="container">
+          <div class="row">
+            <div class="col-md-12 title">
+              <h2>Traffic Prediction Services</h2>
+              <span class="underline">&nbsp;</span>
+            </div>
+
+            <!-- Service Box start -->
+            <div class="col-md-6">
+              <div class="service-box wow fadeInLeft" data-wow-offset="100">
+                <div class="service-icon">+</div>
+                <h3 class="service-title">Real-time Traffic Alerts</h3>
+                <div class="clearfix"></div>
+                <p class="service-content">Get notified about real-time traffic conditions and avoid congested routes for a smoother journey.</p>
+              </div>
+            </div>
+            <!-- Service Box end -->
+
+            <!-- Service Box start -->
+            <div class="col-md-6">
+              <div class="service-box wow fadeInRight" data-wow-offset="100">
+                <div class="service-icon">+</div>
+                <h3 class="service-title">Route Optimization</h3>
+                <div class="clearfix"></div>
+                <p class="service-content">Optimize your route based on current traffic data to reach your destination faster and more efficiently.</p>
+              </div>
+            </div>
+            <!-- Service Box end -->
+
+            <!-- Service Box start -->
+            <div class="col-md-6">
+              <div class="service-box wow fadeInLeft" data-wow-offset="100">
+                <div class="service-icon">+</div>
+                <h3 class="service-title">Traffic Forecasting</h3>
+                <div class="clearfix"></div>
+                <p class="service-content">Use advanced forecasting techniques to predict traffic conditions and plan your travel accordingly.</p>
+              </div>
+            </div>
+            <!-- Service Box end -->
+
+            <!-- Service Box start -->
+            <div class="col-md-6">
+              <div class="service-box wow fadeInRight" data-wow-offset="100">
+                <div class="service-icon">+</div>
+                <h3 class="service-title">Historical Traffic Data</h3>
+                <div class="clearfix"></div>
+                <p class="service-content">Access historical traffic data to analyze trends and make informed decisions about your travel plans.</p>
+              </div>
+            </div>
+            <!-- Service Box end -->
+
+          </div>
+        </section>
+        <!-- Services end -->
+
+
+
+        <!-- Newsletter start -->
+        <section id="newsletter" class="wow slideInLeft" data-wow-offset="300">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12"><div class="alert hidden" id="newsletter-form-msg"></div></div>
+              <div class="col-md-5 col-xs-12">
+                <h2 class="title">SIGN UP FOR TRAFFIC UPDATES
+                  <span class="subtitle">stay informed about traffic conditions</span></h2>
+                </div>
+                <div class="col-md-7">
+                  <div class="newsletter-form pull-left">
+                    <form action="#" method="post" name="newsletter-form" id="newsletter-form">
+                      <div class="input-group">
+                        <input type="email" name="newsletter-email" class="form-control" placeholder="Enter your Email for Updates">
+                        <span class="input-group-btn">
+                          <input class="btn btn-default button" type="submit" value="send">
+                        </span>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="social-icons pull-right">
+                    <ul>
+                      <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                      <li><a class="googleplus" href="#"><i class="fa fa-google-plus"></i></a></li>
+                      <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                    </ul>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Newsletter end -->
+
+
+
+          <!-- Vehicles start -->
+          <section id="vehicles" class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <h2 class="title wow fadeInDown" data-wow-offset="200">Traffic Models - <span class="subtitle"> Real-time Predictions</span></h2>
+              </div>
+
+              <!-- Vehicle nav start -->
+              <div class="col-md-3 wow fadeInUp" data-wow-offset="100">
+                <div id="vehicle-nav-container">
+                  <ul class="vehicle-nav">
+                    <li class="active"><a href="#vehicle-1">Real-Time Traffic Data</a><span class="active">&nbsp;</span></li>
+                    <li><a href="#vehicle-2">Traffic Flow Analysis</a><span class="active">&nbsp;</span></li>
+                    <li><a href="#vehicle-3">Machine Learning Models</a><span class="active">&nbsp;</span></li>
+                    <li><a href="#vehicle-4">Traffic Congestion Prediction</a><span class="active">&nbsp;</span></li>
+                    <li><a href="#vehicle-5">Anomaly Detection</a><span class="active">&nbsp;</span></li>
+                    <li><a href="#vehicle-6">Predictive Analytics</a><span class="active">&nbsp;</span></li>
+                  </ul>
+                </div>
+              </div>
+              <!-- Vehicle nav end -->
+
+              <!-- Vehicle 1 data start -->
+              <div class="vehicle-data" id="vehicle-1">
+                <div class="col-md-6 wow fadeIn" data-wow-offset="100">
+                  <div class="vehicle-img">
+                    <img class="img-responsive" src="C:\Users\Айгерим\OneDrive\Рабочий стол\carrental\themeforest-8245093-car-rental-landing-page\website\img\vehicle1.png" alt="Vehicle">
+                  </div>
+                </div>
+                <div class="col-md-3 wow fadeInUp" data-wow-offset="200">
+                  <div class="vehicle-price">91% <span class="info"> prediction accuracy</span></div>
+                  <table class="table vehicle-features">
+                    <tr>
+                      <td>Type</td>
+                      <td>statistical model</td>
+                    </tr>
+                    <tr>
+                      <td>Data Used</td>
+                      <td>historical traffic data</td>
+                    </tr>
+                    <tr>
+                      <td>Parametres</td>
+                      <td>time of day, day of the week</td>
+                    </tr>
+                    <tr>
+                      <td>Computation time</td>
+                      <td>5 seconds</td>
+                    </tr>
+                    <tr>
+                      <td>Training Data Size</td>
+                      <td>1 year</td>
+                    </tr>
+                    <tr>
+                      <td>Model Complexity</td>
+                      <td>medium</td>
+                    </tr>
+                    <tr>
+                      <td>Real-time Data Integration</td>
+                      <td>yes</td>
+                    </tr>
+                  </table>
+                  
+                </div>
+              </div>
+              <!-- Vehicle 1 data end -->
+
+              <!-- Vehicle 2 data start -->
+              <div class="vehicle-data" id="vehicle-2">
+                <div class="col-md-6" data-wow-offset="200">
+                  <div class="vehicle-img">
+                    <img class="img-responsive" src="C:\Users\Айгерим\OneDrive\Рабочий стол\carrental\themeforest-8245093-car-rental-landing-page\website\img\vehicle1.png"" alt="Vehicle">
+                  </div>
+                </div>
+                <div class="col-md-3" data-wow-offset="200">
+                  <div class="vehicle-price">99% <span class="info"> prediction accuracy</span></div>
+                  <table class="table vehicle-features">
+                    <tr>
+                      <td>Type</td>
+                      <td>statistical model</td>
+                    </tr>
+                    <tr>
+                      <td>Data Used</td>
+                      <td>historical traffic data</td>
+                    </tr>
+                    <tr>
+                      <td>Parametres</td>
+                      <td>time of day, day of the week</td>
+                    </tr>
+                    <tr>
+                      <td>Computation time</td>
+                      <td>5 seconds</td>
+                    </tr>
+                    <tr>
+                      <td>Training Data Size</td>
+                      <td>1 year</td>
+                    </tr>
+                    <tr>
+                      <td>Model Complexity</td>
+                      <td>medium</td>
+                    </tr>
+                    <tr>
+                      <td>Real-time Data Integration</td>
+                      <td>yes</td>
+                    </tr>
+                  </table>
+                  
+                </div>
+              </div>
+              <!-- Vehicle 2 data end -->
+
+              <!-- Vehicle 3 data start -->
+              <div class="vehicle-data" id="vehicle-3">
+                <div class="col-md-6" data-wow-offset="200">
+                  <div class="vehicle-img">
+                    <img class="img-responsive" src="C:\Users\Айгерим\OneDrive\Рабочий стол\carrental\themeforest-8245093-car-rental-landing-page\website\img\vehicle1.png" alt="Vehicle">
+                  </div>
+                </div>
+                <div class="col-md-3" data-wow-offset="200">
+                  <div class="vehicle-price">99% <span class="info"> prediction accuracy</span></div>
+                  <table class="table vehicle-features">
+                    <tr>
+                      <td>Type</td>
+                      <td>statistical model</td>
+                    </tr>
+                    <tr>
+                      <td>Data Used</td>
+                      <td>historical traffic data</td>
+                    </tr>
+                    <tr>
+                      <td>Parametres</td>
+                      <td>time of day, day of the week</td>
+                    </tr>
+                    <tr>
+                      <td>Computation time</td>
+                      <td>5 seconds</td>
+                    </tr>
+                    <tr>
+                      <td>Training Data Size</td>
+                      <td>1 year</td>
+                    </tr>
+                    <tr>
+                      <td>Model Complexity</td>
+                      <td>medium</td>
+                    </tr>
+                    <tr>
+                      <td>Real-time Data Integration</td>
+                      <td>yes</td>
+                    </tr>
+                  </table>
+                  
+                </div>
+              </div>
+              <!-- Vehicle 3 data end -->
+
+              <!-- Vehicle 4 data start -->
+              <div class="vehicle-data" id="vehicle-4">
+                <div class="col-md-6" data-wow-offset="200">
+                  <div class="vehicle-img">
+                    <img class="img-responsive" src="C:\Users\Айгерим\OneDrive\Рабочий стол\carrental\themeforest-8245093-car-rental-landing-page\website\img\vehicle1.png" alt="Vehicle">
+                  </div>
+                </div>
+                <div class="col-md-3" data-wow-offset="200">
+                  <div class="vehicle-price">99% <span class="info"> prediction accuracy</span></div>
+                  <table class="table vehicle-features">
+                    <tr>
+                      <td>Type</td>
+                      <td>statistical model</td>
+                    </tr>
+                    <tr>
+                      <td>Data Used</td>
+                      <td>historical traffic data</td>
+                    </tr>
+                    <tr>
+                      <td>Parametres</td>
+                      <td>time of day, day of the week</td>
+                    </tr>
+                    <tr>
+                      <td>Computation time</td>
+                      <td>5 seconds</td>
+                    </tr>
+                    <tr>
+                      <td>Training Data Size</td>
+                      <td>1 year</td>
+                    </tr>
+                    <tr>
+                      <td>Model Complexity</td>
+                      <td>medium</td>
+                    </tr>
+                    <tr>
+                      <td>Real-time Data Integration</td>
+                      <td>yes</td>
+                    </tr>
+                  </table>
+                  
+                </div>
+              </div>
+              <!-- Vehicle 4 data end -->
+
+              <!-- Vehicle 5 data start -->
+              <div class="vehicle-data" id="vehicle-5">
+                <div class="col-md-6" data-wow-offset="200">
+                  <div class="vehicle-img">
+                    <img class="img-responsive" src="C:\Users\Айгерим\OneDrive\Рабочий стол\carrental\themeforest-8245093-car-rental-landing-page\website\img\vehicle1.png" alt="Vehicle">
+                  </div>
+                </div>
+                <div class="col-md-3" data-wow-offset="200">
+                  <div class="vehicle-price">99% <span class="info"> prediction accuracy</span></div>
+                  <table class="table vehicle-features">
+                    <tr>
+                      <td>Type</td>
+                      <td>statistical model</td>
+                    </tr>
+                    <tr>
+                      <td>Data Used</td>
+                      <td>historical traffic data</td>
+                    </tr>
+                    <tr>
+                      <td>Parametres</td>
+                      <td>time of day, day of the week</td>
+                    </tr>
+                    <tr>
+                      <td>Computation time</td>
+                      <td>5 seconds</td>
+                    </tr>
+                    <tr>
+                      <td>Training Data Size</td>
+                      <td>1 year</td>
+                    </tr>
+                    <tr>
+                      <td>Model Complexity</td>
+                      <td>medium</td>
+                    </tr>
+                    <tr>
+                      <td>Real-time Data Integration</td>
+                      <td>yes</td>
+                    </tr>
+                  </table>
+                  
+                  
+                </div>
+              </div>
+              <!-- Vehicle 5 data end -->
+
+              <!-- Vehicle 6 data start -->
+              <div class="vehicle-data" id="vehicle-6">
+                <div class="col-md-6" data-wow-offset="200">
+                  <div class="vehicle-img">
+                    <img class="img-responsive" src="C:\Users\Айгерим\OneDrive\Рабочий стол\carrental\themeforest-8245093-car-rental-landing-page\website\img\vehicle1.png" alt="Vehicle">
+                  </div>
+                </div>
+                <div class="col-md-3" data-wow-offset="200">
+                  <div class="vehicle-price">99% <span class="info"> prediction accuracy</span></div>
+                  <table class="table vehicle-features">
+                    <tr>
+                      <td>Type</td>
+                      <td>statistical model</td>
+                    </tr>
+                    <tr>
+                      <td>Data Used</td>
+                      <td>historical traffic data</td>
+                    </tr>
+                    <tr>
+                      <td>Parametres</td>
+                      <td>time of day, day of the week</td>
+                    </tr>
+                    <tr>
+                      <td>Computation time</td>
+                      <td>5 seconds</td>
+                    </tr>
+                    <tr>
+                      <td>Training Data Size</td>
+                      <td>1 year</td>
+                    </tr>
+                    <tr>
+                      <td>Model Complexity</td>
+                      <td>medium</td>
+                    </tr>
+                    <tr>
+                      <td>Real-time Data Integration</td>
+                      <td>yes</td>
+                    </tr>
+                  </table>
+                  
+                  
+                </div>
+              </div>
+              <!-- Vehicle 6 data end -->
+
+            </div>
+          </section>
+          <!-- Vehicles end -->
+
+
+
+          <!-- Reviews start -->
+          <section id="reviews" class="container wow fadeInUp">
+            <div class="row text-center">
+              <div class="col-md-12 stars">
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star big"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+              </div>
+              <div class="col-md-10 col-md-offset-1">
+                <div id="reviews-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+                  <div class="carousel-inner">
+
+                    <!-- Review item 1 start -->
+                    <div class="item active">
+                      <div class="review">
+                        It is always a positive experience when renting from your 5th street location. The staff is very professional and efficient and always smiling. And I always feel welcome and appreciated. The management is always prompt to solve any issue at any moment. Their efficiency and professionalism makes it my number one choice.
+                      </div>
+                      <div class="author">
+                        – Michael Smith, Santa Barbara CA
+                      </div>
+                    </div>
+                    <!-- Review item 1 end -->
+
+                    <!-- Review item 2 start -->
+                    <div class="item">
+                      <div class="review">
+                       This rental was the best rental experience ever! After completing all details on-line myself, the pick-up was super efficient, extremely friendly, and free of the usual 5 - 10 min very unpleasant drilling of why one is not signing up to all options (insurance, etc). I was handed the keys and a wide register print out that required...
+                     </div>
+                     <div class="author">
+                      – Jon Doe, Las Vegas NV
+                    </div>
+                  </div>
+                  <!-- Review item 2 end -->
+
+                  <!-- Review item 3 start -->
+                  <div class="item">
+                    <div class="review">
+                      This was my first time renting from car|rental. And over all it was a wonderful experience I have no complaints. The service rep help me find the best rental to suit my needs. I also love the fact that you guys provide luxury rentals at a great price. I will definitely rent with this company again.
+                    </div>
+                    <div class="author">
+                      – Michael Smith, Santa Barbara CA
+                    </div>
+                  </div>
+                  <!-- Review item 3 end -->
+
+                </div>
+
+                <!-- Review Nav start -->
+                <ol class="carousel-indicators">
+                  <li data-target="#reviews-carousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#reviews-carousel" data-slide-to="1"></li>
+                  <li data-target="#reviews-carousel" data-slide-to="2"></li>
+                </ol>
+                <!-- Review Nav end -->
+
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Reviews end -->
+
+
+
+
+        <!-- Information start -->
+        <section id="information" class="container">
+
+          
+
+
+        </section>
+        <!-- Information end -->
+
+
+
+        <!-- Partners start -->
+        <section id="partners" class="wow fadeIn" data-wow-offset="50">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <h2>Meet Our Partners</h2>
+                <span class="underline">&nbsp;</span>
+                <p>To contribute to positive change and achieve our sustainability goals, we partner with many extraordinary organizations around the world. Their expertise enables us to do far more than we could alone, and their passion and talent inspire us. It is our pleasure to introduce you to a handful of the organizations whose accomplishments and commitments are representative of all the organizations we are fortunate to call our partners.</p>
+              </div>
+              <div class="col-md-3 col-xs-6 text-center">
+                <img src="img/partner1.png" alt="Partner" class="img-responsive wow fadeInUp" data-wow-delay="0.5s" data-wow-offset="200">
+              </div>
+              <div class="col-md-3 col-xs-6 text-center">
+                <img src="img/partner2.png" alt="Partner" class="img-responsive wow fadeInUp" data-wow-delay="1s" data-wow-offset="200">
+              </div>
+              <div class="col-md-3 col-xs-6 text-center">
+                <img src="img/partner3.png" alt="Partner" class="img-responsive wow fadeInUp" data-wow-delay="1.5s" data-wow-offset="200">
+              </div>
+              <div class="col-md-3 col-xs-6 text-center">
+                <img src="img/partner4.png" alt="Partner" class="img-responsive wow fadeInUp" data-wow-delay="2s" data-wow-offset="200">
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Partners end -->
+
+
+
+        <!-- Contact start -->
+        <section id="contact" class="container wow bounceInUp" data-wow-offset="50">
+          <div class="row">
+            <div class="col-md-12">
+              <h2>Contact Us</h2>
+            </div>
+            <div class="col-md-4 col-xs-12 pull-right">
+              <h4 class="contact-box-title">Our team</h4>
+              <div class="contact-box">
+                <img src="C:\Users\Айгерим\OneDrive\Рабочий стол\carrental\themeforest-8245093-car-rental-landing-page\website\img\contact-box-img2.jpg" alt="contact-img">
+                <div class="contact-box-name">Best friends</div>
+              
+            
+                <div class="clearfix"></div>
+              </div>
+              <div class="contact-box-border">&nbsp;</div>
+
+              <div class="contact-box-divider">&nbsp;</div>
+
+              <h4 class="contact-box-title"></h4>
+              <div class="contact-box">
+                <img src="C:\Users\Айгерим\OneDrive\Рабочий стол\carrental\themeforest-8245093-car-rental-landing-page\website\img\contact-box-img3.jpg" alt="contact-img">
+                <div class="contact-box-name">Aigerim</div>
+                <div class="contact-box-phon"><span class="highlight">Phone:</span> 777-999-888</div>
+                <div class="contact-box-email"><span class="highlight">Email:</span> 220485@mail.ru</div>
+                <div class="clearfix"></div>
+              </div>
+              <div class="contact-box-border">&nbsp;</div>
+
+              <div class="contact-box">
+                <img src="C:\Users\Айгерим\OneDrive\Рабочий стол\carrental\themeforest-8245093-car-rental-landing-page\website\img\contact-box-img1.jpg" alt="contact-img">
+                <div class="contact-box-name">Aizhan</div>
+                <div class="contact-box-phon"><span class="highlight">Phone:</span> 888-999-888</div>
+                <div class="contact-box-email"><span class="highlight">Email:</span> 221518@mail.ru</div>
+                <div class="clearfix"></div>
+              </div>
+              <div class="contact-box-border">&nbsp;</div>
+            </div>
+            <div class="col-md-8 col-xs-12 pull-left">
+              <p class="contact-info">You have any questions or need additional information? <br>
+                <span class="address"><span class="highlight">Address:</span>  AITU, Mangilik El</span></p>
+                <form action="#" method="post" id="contact-form" name="contact-form">
+
+                  <div class="alert hidden" id="contact-form-msg"></div>
+
+                  <div class="form-group">
+                    <input type="text" class="form-control first-name text-field" name="first-name" placeholder="First Name:">
+                    <input type="text" class="form-control last-name text-field" name="last-name" placeholder="Last Name:">
+                    <div class="clearfix"></div>
+                  </div>
+
+                  <div class="form-group">
+                    <input type="tel" class="form-control telephone text-field" name="telephone" placeholder="Telephone:">
+                  </div>
+
+                  <div class="form-group">
+                    <input type="email" class="form-control email text-field" name="email" placeholder="Email:">
+                  </div>
+
+                  <div class="form-group">
+                    <textarea class="form-control message" name="message" placeholder="Message:"></textarea>
+                  </div>
+
+                    <input type="submit" class="btn submit-message" name="submit-message" value="Submit Message">
+
+
+                </form>
+              </div>
+
+            </div>
+          </section>
+          <!-- Contact end -->
+
+
+          <a href="#" class="scrollup">ScrollUp</a>
+
+
+          <!-- Footer start -->
+          <footer>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <ul class="footer-nav">
+                    <li><a class="scroll-to" href="#top">Home</a></li>
+                    <li><a class="scroll-to" href="#services">Services</a></li>
+                    <li><a class="scroll-to" href="#vehicles">Traffic Models</a></li>
+                    <li><a class="scroll-to" href="#reviews">Reviews</a></li>
+                    <li><a class="scroll-to" href="#locations">Locations</a></li>
+                    <li><a class="scroll-to" href="#contact">Contact</a></li>
+                  </ul>
+                  <div class="clearfix"></div>
+                  <p class="copyright"> All Rights Reserved</p>
+                </div>
+              </div>
+            </div>
+          </footer>
+          <!-- Footer end -->
+
+
+
+          <!-- Checkout Modal Start -->
+          <div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog" aria-labelledby="checkoutModalLabel" aria-hidden="true" data-backdrop="static">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <form action="#" method="post" id="checkout-form" name="checkout-form">
+
+                  <!-- Modal header start -->
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Complete reservation</h4>
+                  </div>
+                  <!-- Modal header end -->
+
+                  <!-- Modal body start -->
+                  <div class="modal-body">
+                    
+
+                    
+
+                    <hr>
+
+                   
+
+
+                  
+                </div>
+                <!-- Modal body end -->
+
+                <!-- Modal footer start -->
+                <div class="modal-footer">
+                  <span class="btn-border btn-gray">
+                    <button type="button" class="btn btn-default btn-gray" data-dismiss="modal">Cancel</button>
+                  </span>
+                  
+                </div>
+                <!-- Modal footer end -->
+
+              </form>
+            </div>
+          </div>
+        </div>
+       
+
+
+       
+        <script src="js/jquery-1.11.0.min.js"></script>
+       
+                  <script> $(document).ready(function() {$('#traffic-prediction-form').on('submit', function(event) {event.preventDefault();var carCount = parseInt($('#car-count').val());var bikeCount = parseInt($('#bike-count').val());var busCount = parseInt($('#bus-count').val()); var truckCount = parseInt($('#truck-count').val());  var total = carCount + bikeCount + busCount + truckCount;var prediction = '';if (total < 50) {prediction = 'Low';} else if (total >= 50 && total < 100) {prediction = 'Normal';} else if (total >= 100 && total < 200) {prediction = 'Heavy'; } else { prediction = 'High'; }$('#predictionResult').removeClass('hidden').text('Traffic Situation: ' + prediction); });});    
+        </script>
+        
+        <script src="js/style-switcher.js"></script>
+       
+        
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.autocomplete.min.js"></script>
+        <script src="js/jquery.placeholder.js"></script>
+        <script src="js/locations-autocomplete.js"></script>
+        <script src="js/bootstrap-datepicker.js"></script>
+        <script src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
+        <script src="js/gmap3.min.js"></script>
+      
+
+            <script src="js/wow.min.js"></script>
+            <script>
+                new WOW({mobile: false}).init();
+            </script>
+        
+
+        <script src="js/custom.js"></script>
+        <script>
+          $(document).ready(function() {
+    $('#traffic-prediction-form').on('submit', function(event) {
+        event.preventDefault();
+
+        var formData = {
+            'date': $('#date').val(),
+            'day_of_week': parseInt($('#day-of-week').val()),
+            'car_count': parseInt($('#car-count').val()),
+            'bike_count': parseInt($('#bike-count').val()),
+            'bus_count': parseInt($('#bus-count').val()),
+            'truck_count': parseInt($('#truck-count').val()),
+            'hour': parseInt($('#hour').val()),
+            'minute': parseInt($('#minute').val()),
+            'am_pm': parseInt($('#ampm').val())
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: '/predict',
+            data: JSON.stringify(formData),
+            contentType: 'application/json',
+            success: function(response) {
+                alert('Prediction: ' + response.prediction);
+            },
+            error: function(error) {
+                console.log('Error:', error);
+            }
+        });
+    });
+});
+
+          </script>
+          
+      </body>
+      </html>
